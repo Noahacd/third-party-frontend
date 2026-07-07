@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 
 import { AuthCardSkeleton } from '@/components/auth/AuthCardSkeleton';
+import { BackendConnectionStatus } from '@/components/auth/BackendConnectionStatus';
 import { LoginPanel } from '@/components/auth/LoginPanel';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -23,6 +24,7 @@ export default function Page() {
           Dashboard（受保护）
         </Link>
       </nav>
+      <BackendConnectionStatus />
       <Suspense fallback={<AuthCardSkeleton />}>
         <LoginPanel />
       </Suspense>
