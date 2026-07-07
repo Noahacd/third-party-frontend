@@ -1,0 +1,59 @@
+{
+  "name": "nextjs-party",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.2",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "concurrently \"next dev -p 4050 -H 127.0.0.1\" \"wait-on tcp:127.0.0.1:4050 && open-cli http://127.0.0.1:4050\"",
+    "dev:test": "concurrently \"cross-env APP_ENV=test next dev -p 4050 -H 127.0.0.1\" \"wait-on tcp:127.0.0.1:4050 && open-cli http://127.0.0.1:4050\"",
+    "build:test": "cross-env APP_ENV=test next build",
+    "build:prod": "cross-env APP_ENV=production next build",
+    "start:test": "cross-env APP_ENV=test next start -p 4050",
+    "start:prod": "cross-env APP_ENV=production next start -p 4050",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:all": "prettier --write . \"../node-server/**/*.js\""
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.23.0",
+    "next": "16.2.10",
+    "next-themes": "^0.4.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "shadcn": "^4.13.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "open-cli": "^9.0.0",
+    "prettier": "^3.9.4",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wait-on": "^9.0.10"
+  }
+}
