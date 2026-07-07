@@ -79,7 +79,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     }
 
     if (!pendingBootstrap) {
-      runBootstrap(set, '无法获取登录状态，请确认后端服务已启动。');
+      runBootstrap(set, '无法获取登录状态，请检查 API 代理与后端服务配置。');
     }
 
     return pendingBootstrap;

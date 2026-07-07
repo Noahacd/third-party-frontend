@@ -16,13 +16,22 @@ export async function parseSessionResponse(
   }
 
   if (!response.ok) {
-    throw new Error('Failed to fetch auth session');
+    throw new Error(`Failed to fetch auth session (${response.status})`);
   }
 
-  const data = (await response.json()) as {
-    user: AuthSession['user'];
-    accessToken: string;
+  let data: {
+    user?: AuthSession['user'];
+    accessToken?: string;
   };
+
+  try {
+    data = (await response.json()) as {
+      user: AuthSession['user'];
+      accessToken: string;
+    };
+  } catch {
+    throw new Error('Invalid auth session response');
+  }
 
   if (!data.user || !data.accessToken) {
     throw new Error('Invalid auth session response');

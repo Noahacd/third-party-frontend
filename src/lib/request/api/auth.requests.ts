@@ -20,12 +20,18 @@ export async function bootstrapAuthSession(): Promise<AuthSession | null> {
 
     if (response.status === 401) {
       const refreshResponse = await requestAuthRefresh();
-      return parseSessionResponse(refreshResponse);
+      if (refreshResponse.status === 401) {
+        return null;
+      }
+      return await parseSessionResponse(refreshResponse);
     }
 
-    return parseSessionResponse(response);
-  } catch {
-    return null;
+    return await parseSessionResponse(response);
+  } catch (err) {
+    if (err instanceof Error && err.name === 'AbortError') {
+      throw new Error('连接后端超时，请稍后重试');
+    }
+    throw err;
   }
 }
 
