@@ -18,12 +18,9 @@ export async function bootstrapAuthSession(): Promise<AuthSession | null> {
   try {
     const response = await requestAuthMe();
 
+    // /auth/me 的 authMiddleware 已在服务端尝试过 refresh，401 即未登录
     if (response.status === 401) {
-      const refreshResponse = await requestAuthRefresh();
-      if (refreshResponse.status === 401) {
-        return null;
-      }
-      return await parseSessionResponse(refreshResponse);
+      return null;
     }
 
     return await parseSessionResponse(response);
