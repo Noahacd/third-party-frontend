@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { AuthBootstrap } from '@/components/auth/AuthBootstrap';
+import { LoginDialogHost } from '@/components/auth/LoginDialogHost';
 import { SiteHeader } from '@/components/auth/SiteHeader';
 import { TelegramAuthHandler } from '@/components/auth/TelegramAuthHandler';
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <AuthBootstrap />
         <TelegramAuthHandler />
         <SiteHeader />
+        <LoginDialogHost />
         {children}
       </body>
     </html>

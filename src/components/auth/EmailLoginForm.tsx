@@ -17,7 +17,7 @@ type EmailLoginFormProps = {
 
 export function EmailLoginForm({
   onSuccess,
-  redirectTo = '/dashboard',
+  redirectTo = '/',
 }: EmailLoginFormProps) {
   const router = useRouter();
   const [email, setEmail] = useState('');

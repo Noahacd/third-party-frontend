@@ -38,7 +38,7 @@ export function TelegramAuthHandler() {
         const cleanUrl = nextSearch ? `${pathname}?${nextSearch}` : pathname;
 
         window.history.replaceState(null, '', cleanUrl || '/');
-        window.location.assign('/dashboard');
+        window.location.assign('/');
       } catch {
         window.location.assign('/?error=telegram_login_failed');
       }
